@@ -6,7 +6,7 @@ import numpy as np
 
 # Function to download the model from Google Drive
 def download_model():
-    url = 'https://drive.google.com/file/d/1xxRSLUUKl-mepRKocdKloRowz6olcjxd/view?usp=sharing'  # Replace YOUR_FILE_ID with the actual file ID
+    url = 'https://drive.google.com/file/d/1xxRSLUUKl-mepRKocdKloRowz6olcjxd'  # Replace YOUR_FILE_ID with the actual file ID
     output = 'best_random_forest.pkl'
     gdown.download(url, output, quiet=False)
 
