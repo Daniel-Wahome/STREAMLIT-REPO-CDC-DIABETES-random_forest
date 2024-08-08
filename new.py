@@ -2,17 +2,19 @@ import streamlit as st
 import joblib
 import os
 import numpy as np
+import gdown
 from PIL import Image
 
 # Ensure the model file is in the correct path
-MODEL_FILE_PATH = r'C:\Users\A\Desktop\CAPSTONE\best_random_forest.pkl'
+MODEL_FILE_PATH = 'best_random_forest.pkl'
+MODEL_GDRIVE_URL = 'https://drive.google.com/file/d/1xxRSLUUKl-mepRKocdKloRowz6olcjxd/view?usp=drive_link'
 
 # Load the trained Random Forest model
 @st.cache_resource
 def load_model():
     if not os.path.exists(MODEL_FILE_PATH):
-        # Add your model downloading code here if needed
-        pass
+        # Download the model file from Google Drive
+        gdown.download(MODEL_GDRIVE_URL, MODEL_FILE_PATH, quiet=False)
     return joblib.load(MODEL_FILE_PATH)
 
 model = load_model()
@@ -25,6 +27,7 @@ def predict_diabetes(inputs):
 # URLs of the top image and background image
 top_image_url = 'https://images.pexels.com/photos/6823764/pexels-photo-6823764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
 background_image_url = 'https://images.unsplash.com/photo-1663601398716-3d40cef5d1fc?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
 
 # Set up the landing page
 def landing_page():
